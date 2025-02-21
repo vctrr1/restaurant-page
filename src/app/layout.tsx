@@ -11,7 +11,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Food Delivery",
+  title: "Gourmet Spot",
   description: "Created by vctrr",
 };
 
