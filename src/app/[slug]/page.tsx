@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { db } from "@/lib/prisma";
+
+import ConsumptionMethodOption from "./components/consumption-method-option";
 
 interface RestaurantPageProps {
   params: Promise<{ slug: string }>;
@@ -34,33 +34,21 @@ const RestaurantPage = async ({ params }: RestaurantPageProps) => {
           oferecer praticidade e sabor em cada detalhe.
         </p>
       </div>
-      <div className="grid grid-cols-2 gap-5 pt-14">
-        <Card>
-          <CardContent className="flex flex-col items-center gap-8 py-8">
-            <div className="relative h-[70px] w-[70px]">
-              <Image
-                src="/dine-in.svg"
-                alt="Comer aqui"
-                width={70}
-                height={70}
-              />
-            </div>
-            <Button variant="secondary">Comer aqui</Button>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardContent className="flex flex-col items-center gap-8 py-8">
-            <div className="relative h-[70px] w-[70px]">
-              <Image
-                src="/take-away.svg"
-                alt="Retirar"
-                width={70}
-                height={70}
-              />
-            </div>
-            <Button variant="secondary">Retirar</Button>
-          </CardContent>
-        </Card>
+      <div className="grid grid-cols-2 gap-5 pl-5 pr-5 pt-14">
+        <ConsumptionMethodOption
+          imageAlt="Comer Aqui"
+          buttonText="Comer aqui!"
+          imageSrc="/dine-in.svg"
+          option="DINE_IN"
+          slug={slug}
+        />
+        <ConsumptionMethodOption
+          imageAlt="Retirar"
+          buttonText="Retirar"
+          imageSrc="/take-away.svg"
+          option="TAKEAWAY"
+          slug={slug}
+        />
       </div>
     </div>
   );
