@@ -25,7 +25,7 @@ interface ProductDetailProps {
 
 const ProductDetail = ({product}: ProductDetailProps) => {
 
-    const {toggleCart} = useContext(CartContext)
+    const {toggleCart, addProducts} = useContext(CartContext)
 
     const [quantItens, setQuantItens] = useState<number>(0);
 
@@ -36,6 +36,15 @@ const ProductDetail = ({product}: ProductDetailProps) => {
     const handleRemoveItemQuant = () => {
         if(quantItens <= 0) return;
         setQuantItens(quantItens - 1);
+    }
+
+    const handleAddToCart = () => {
+        addProducts({
+            ...product,
+            quantity: quantItens,
+        })
+
+        toggleCart()
     }
 
     return (
@@ -85,7 +94,7 @@ const ProductDetail = ({product}: ProductDetailProps) => {
                         </div>
                     </div>
                 </div>
-                <Button onClick={toggleCart} className=" rounded-full w-full mt-6">Adicionar à sacola</Button>
+                <Button onClick={handleAddToCart} className=" rounded-full w-full mt-6">Adicionar à sacola</Button>
             </div>
             <CartSheet/>
         </>
