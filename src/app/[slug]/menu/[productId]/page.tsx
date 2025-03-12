@@ -8,12 +8,12 @@ import ProductDetail from "./components/product-detail";
 import ProductHeader from "./components/product-header";
 
 interface ProductPageProps {
-    params: Promise<{productId: string}>;
+    params: Promise<{productId: string, slug: string}>;
 }
 
 const ProductPage = async ({params}:ProductPageProps) => {
 
-    const {productId} = await params;
+    const {slug, productId} = await params;
 
     const product = await db.product.findUnique({
         where: {
@@ -23,7 +23,8 @@ const ProductPage = async ({params}:ProductPageProps) => {
             restaurant: {
                 select: {
                     name: true,
-                    avatarImageUrl: true
+                    avatarImageUrl: true,
+                    slug: true,
                 }
             }
         }
@@ -33,8 +34,12 @@ const ProductPage = async ({params}:ProductPageProps) => {
         return notFound();
     }
 
+    if(product.restaurant.slug.toUpperCase() !== slug.toUpperCase()){
+        return notFound();
+    }
+
     return (
-        <div>
+        <div className="flex h-full flex-col">
             <ProductHeader product={product}/>
             <ProductDetail product={product}/>
         </div>
