@@ -38,6 +38,10 @@ const ProductDetail = ({product}: ProductDetailProps) => {
         setQuantItens(quantItens - 1);
     }
 
+    const cartIsEmpty = () => {
+        if(quantItens <= 0) return true
+    }
+
     const handleAddToCart = () => {
         addProducts({
             ...product,
@@ -94,7 +98,7 @@ const ProductDetail = ({product}: ProductDetailProps) => {
                         </div>
                     </div>
                 </div>
-                <Button onClick={handleAddToCart} className=" rounded-full w-full mt-6">Adicionar à sacola</Button>
+                <Button onClick={handleAddToCart} disabled={cartIsEmpty()} className=" rounded-full w-full mt-6">Adicionar à sacola</Button>
             </div>
             <CartSheet/>
         </>
