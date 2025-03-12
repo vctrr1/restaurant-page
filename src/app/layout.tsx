@@ -5,6 +5,8 @@ import { Poppins } from "next/font/google";
 
 import { ThemeProvider } from "@/components/theme-provider";
 
+import { CartProvider } from "./[slug]/menu/contexts/cart";
+
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
@@ -29,7 +31,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <CartProvider>
+            {children}
+          </CartProvider>
         </ThemeProvider>
       </body>
     </html>
