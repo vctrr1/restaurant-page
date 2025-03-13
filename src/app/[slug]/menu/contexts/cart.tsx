@@ -3,7 +3,7 @@
 import { Product } from "@prisma/client";
 import { createContext, ReactNode, useState } from "react";
 
-interface CartProducts extends Pick<Product, "name" | "price" | "id" | "imageUrl"> {
+export interface CartProducts extends Pick<Product, "name" | "price" | "id" | "imageUrl"> {
     quantity: number;
 }
 
@@ -12,6 +12,9 @@ export interface IcartContext {
     products: CartProducts [];
     toggleCart: () => void;
     addProducts: (product: CartProducts) => void;
+    decreaseProductsQuantity: (productId: string) => void;
+    increaseProductsQuantity: (productId: string) => void;
+    removeProduct: (productId: string) => void;
 }
 
 export const CartContext = createContext<IcartContext>({
@@ -19,6 +22,10 @@ export const CartContext = createContext<IcartContext>({
     products: [],
     toggleCart: () => {},
     addProducts: () => {},
+    decreaseProductsQuantity: () => {},
+    increaseProductsQuantity: () => {},
+    removeProduct: () => {},
+
 })
 
 export const CartProvider = ({children}: {children: ReactNode}) => {
@@ -31,7 +38,6 @@ export const CartProvider = ({children}: {children: ReactNode}) => {
 
     const addProducts = (product: CartProducts) => {
         //verificar se o produto ja esta no carrinho
-
         const productIsAlreadyOnTheCart = products.some(prevProducts => prevProducts.id === product.id)
         if(!productIsAlreadyOnTheCart) {
             return setProducts((prev) => [...prev, product])
@@ -49,6 +55,37 @@ export const CartProvider = ({children}: {children: ReactNode}) => {
         })
     }
 
+    const removeProduct = (productId: string) => {
+        setProducts(prevProducts => prevProducts.filter(product => product.id !== productId))
+    } 
+
+    const decreaseProductsQuantity = (productId: string) => {
+        setProducts(prevProducts => {
+            return prevProducts.map(prevProducts => {
+                if(prevProducts.id !== productId){
+                    return prevProducts;
+                }
+                if(prevProducts.quantity === 1) return prevProducts
+
+                return {...prevProducts, quantity: prevProducts.quantity - 1}
+            })
+        })
+    }
+
+    const increaseProductsQuantity = (productId: string) => {
+        setProducts(prevProducts => {
+            return prevProducts.map(prevProducts => {
+                if(prevProducts.id !== productId){
+                    return prevProducts;
+                }
+                
+                return {...prevProducts, quantity: prevProducts.quantity + 1}
+
+                return prevProducts;
+            })
+        })
+    }
+
     return (
         <CartContext.Provider 
         value={{
@@ -56,6 +93,9 @@ export const CartProvider = ({children}: {children: ReactNode}) => {
             products,
             toggleCart,
             addProducts,
+            decreaseProductsQuantity,
+            increaseProductsQuantity,
+            removeProduct,
         }}>
             {children}
         </CartContext.Provider>

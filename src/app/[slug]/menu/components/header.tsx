@@ -5,14 +5,24 @@ import { Pick } from "@prisma/client/runtime/library";
 import { ChevronLeftIcon, ScrollTextIcon } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useContext } from "react";
 
 import { Button } from "@/components/ui/button";
+
+import { CartContext } from "../contexts/cart";
 
 interface RestaurantHeaderProps {
   restaurant: Pick<Restaurant, "coverImageUrl" | "name">;
 }
 
 const RestaurantHeader = ({ restaurant }: RestaurantHeaderProps) => {
+
+  const {toggleCart} = useContext(CartContext);
+
+  const handleAddToCart = () => {
+    toggleCart();
+}
+
   const router = useRouter();
 
   return (
@@ -35,6 +45,7 @@ const RestaurantHeader = ({ restaurant }: RestaurantHeaderProps) => {
         variant="secondary"
         size="icon"
         className="absolute right-4 top-4 z-50 rounded-full"
+        onClick={handleAddToCart}
       >
         <ScrollTextIcon />
       </Button>
