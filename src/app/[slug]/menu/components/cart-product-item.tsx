@@ -17,15 +17,17 @@ const CartProductItem = ({product}: CartProductItemProps) => {
     return (
         <div className="flex items-center justify-between pt-4">
             <div className="flex items-center gap-3">
-                <div className="relative min-h-20 min-w-20">
+                <div className="relative min-h-15 min-w-15">
                     <Image src={product.imageUrl} alt={product.name} fill className="object-cover" />
                 </div>
                 <div className="space-y-1">
                     <p className="text-xs">{product.name}</p>
-                    <p className="text-sm font-semibold">{new Intl.NumberFormat("pt-BR", {
+                    <p className="text-sm font-semibold">
+                        {new Intl.NumberFormat("pt-BR", {
                         style: "currency",
                         currency: "BRL",
-                    }).format(product.price)}</p>
+                        }).format(product.price)}
+                    </p>
                     <div className="flex items-center gap-1 text-center">
                         <Button className="w-7 h-7 rounded-lg" onClick={() => decreaseProductsQuantity(product.id)}>
                             <ChevronLeft/>

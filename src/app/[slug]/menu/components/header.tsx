@@ -22,7 +22,7 @@ const RestaurantHeader = ({ restaurant }: RestaurantHeaderProps) => {
 
   const handleAddToCart = () => {
     toggleCart();
-}
+  }
 
   const router = useRouter();
 
