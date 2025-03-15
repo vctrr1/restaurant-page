@@ -17,7 +17,7 @@ const CartProductItem = ({product}: CartProductItemProps) => {
     return (
         <div className="flex items-center justify-between pt-4">
             <div className="flex items-center gap-3">
-                <div className="relative min-h-15 min-w-15">
+                <div className="relative min-h-20 min-w-20">
                     <Image src={product.imageUrl} alt={product.name} fill className="object-cover" />
                 </div>
                 <div className="space-y-1">
