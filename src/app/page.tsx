@@ -9,7 +9,7 @@ import { db } from "@/lib/prisma";
 import ConsumptionMethodOption from "./[slug]/components/consumption-method-option";
 
 const RestaurantPage = async () => {
-  const slug = "fsw-donalds";
+  const slug = "pao-e-chapa";
 
   const restaurant = await db.restaurant.findUnique({
     where: {

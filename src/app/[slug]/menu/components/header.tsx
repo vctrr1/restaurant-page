@@ -15,10 +15,7 @@ interface RestaurantHeaderProps {
   slug: string;
 }
 
-
-
 const RestaurantHeader = ({ restaurant, slug }: RestaurantHeaderProps) => {
-
   const router = useRouter();
 
   return (
@@ -35,7 +32,7 @@ const RestaurantHeader = ({ restaurant, slug }: RestaurantHeaderProps) => {
         <Image
           alt={restaurant.name}
           fill
-          src={restaurant.coverImageUrl}
+          src="/restaurant-cover.jpeg"
           className="object-cover"
         />
         <Button
@@ -47,9 +44,8 @@ const RestaurantHeader = ({ restaurant, slug }: RestaurantHeaderProps) => {
           <ScrollTextIcon />
         </Button>
       </div>
-      <CartSheet/>
+      <CartSheet />
     </>
-
   );
 };
 
