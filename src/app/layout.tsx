@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
 
 import { CartProvider } from "./[slug]/menu/contexts/cart";
 
@@ -34,6 +35,7 @@ export default function RootLayout({
           <CartProvider>
             {children}
           </CartProvider>
+          <Toaster/>
         </ThemeProvider>
       </body>
     </html>
