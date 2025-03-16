@@ -1,4 +1,4 @@
-"use server"
+"use server";
 
 import { notFound } from "next/navigation";
 
@@ -46,7 +46,7 @@ const RestaurantMenuPage = async ({
 
   return (
     <div>
-      <RestaurantHeader restaurant={restaurant} slug={slug}/>
+      <RestaurantHeader restaurant={restaurant} slug={slug} />
       <RestaurantCategories restaurant={restaurant} />
     </div>
   );

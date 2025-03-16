@@ -35,7 +35,7 @@ const RestaurantPage = async () => {
             height={150}
           />
         </div>
-        <div className="spece-y-2 pl-6 pr-6 pt-24 text-center">
+        <div className="spece-y-2 pl-6 pr-6 pt-8 text-center">
           <h3 className="text-2xl font-semibold">Seja bem-vindo!</h3>
           <p className="opacity-55">
             Escolha como prefere aproveitar sua refeição. Estamos aqui para
