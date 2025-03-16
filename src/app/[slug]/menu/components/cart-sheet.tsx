@@ -1,11 +1,12 @@
 import { useContext } from "react";
 
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 
 import { CartContext } from "../contexts/cart";
 import CartProductItem from "./cart-product-item";
+import FinishOrderButton from "./finish-order-button";
+  
 
 const CartSheet = () => {
 
@@ -38,9 +39,7 @@ const CartSheet = () => {
                             </div>
                         </CardContent>
                     </Card>
-                    <Button className="w-full h-8 rounded-full" disabled={cartIsEmpty()}>
-                        Finalizar pedido
-                    </Button>
+                    <FinishOrderButton cartIsEmpty={cartIsEmpty()}/>
                 </div>
             </SheetContent>
 
