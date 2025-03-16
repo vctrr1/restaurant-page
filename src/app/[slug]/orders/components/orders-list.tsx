@@ -4,7 +4,7 @@ import { OrderStatus, Prisma } from "@prisma/client";
 import { format } from "date-fns";
 import { ChevronLeftIcon, ScrollTextIcon } from "lucide-react";
 import Image from "next/image";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -29,9 +29,7 @@ interface OrdersListPros {
 }
 
 const OrdersList = ({ orders }: OrdersListPros) => {
-  const { slug } = useParams<{ slug: string }>();
   const router = useRouter();
-  const handleBackClick = () => router.push(`/${slug}`);
 
   const getOrderStatus = (status: OrderStatus) => {
     if (status === "FINISHED") {
@@ -57,7 +55,7 @@ const OrdersList = ({ orders }: OrdersListPros) => {
         className="rounded-full"
         variant="secondary"
         size="icon"
-        onClick={handleBackClick}
+        onClick={() => router.back()}
       >
         <ChevronLeftIcon />
       </Button>
