@@ -15,7 +15,7 @@ const ThemeButton = () => {
   }, []);
 
   if (!mounted) {
-    return <div className="w-[2.5rem] h-[2.5rem]" />;
+    return <div className="h-[2.5rem] w-[2.5rem]" />;
   }
 
   const handleThemeChange = () => {
