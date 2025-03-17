@@ -57,7 +57,7 @@ const RestaurantCategories = ({ restaurant }: RestaurantCategoriesProps) => {
           <p>Aberto!</p>
         </div>
       </div>
-      <ScrollArea className="w-full">
+      <ScrollArea className="mx-auto sm:w-full md:w-2/3 lg:w-[60%] xl:w-[50%] 2xl:w-[40%]">
         <div className="flex w-max space-x-4 p-4 pt-3">
           {restaurant.menuCategories.map((item) => (
             <Button
@@ -75,9 +75,11 @@ const RestaurantCategories = ({ restaurant }: RestaurantCategoriesProps) => {
         </div>
         <ScrollBar orientation="horizontal" />
       </ScrollArea>
-      <h3 className="px-4 pt-2 font-semibold">{selectedCategory.name}</h3>
-      <div className="pb-20">
-        <ProductsList products={selectedCategory.products} />
+      <div className="flex w-full flex-col items-center">
+        <h3 className="pt-2 font-semibold">{selectedCategory.name}</h3>
+        <div className="pb-20 sm:w-full md:w-2/3 lg:w-[60%] xl:w-[50%] 2xl:w-[40%]">
+          <ProductsList products={selectedCategory.products} />
+        </div>
       </div>
       {products.length > 0 && (
         <div className="fixed bottom-0 left-0 right-0 flex w-full items-center justify-between border-t bg-background p-5 px-5 py-3">
