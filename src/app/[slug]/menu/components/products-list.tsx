@@ -19,7 +19,7 @@ const ProductsList = ({ products }: ProductsListProps) => {
         <Link
           key={product.id}
           href={`/${slug}/menu/${product.id}?consumptionMethod=${consumptionMethod}`}
-          className="flex items-center gap-10 border-b py-3"
+          className="flex items-center justify-between gap-10 border-b py-3"
         >
           <div>
             <h3 className="text-sm font-medium">{product.name}</h3>
