@@ -8,14 +8,14 @@ import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
 import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-} from "@/components/ui/drawer";
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import {
   Form,
   FormControl,
@@ -56,56 +56,56 @@ const CpfForm = () => {
   };
 
   return (
-    <Drawer open>
-      <DrawerContent>
-        <DrawerHeader>
-          <DrawerTitle>Histórico de compras</DrawerTitle>
-          <DrawerDescription>
-            Insira seu CPF para visualizar seus pedidos.
-          </DrawerDescription>
-        </DrawerHeader>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            <FormField
-              control={form.control}
-              name="cpf"
-              render={({ field }) => (
-                <FormItem className="p-4">
-                  <FormLabel>CPF:</FormLabel>
-                  <FormControl>
-                    <PatternFormat
-                      placeholder="Digite seu CPF..."
-                      format="###.###.###.##"
-                      customInput={Input}
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <DrawerFooter>
-              <Button
-                type="submit"
-                variant="destructive"
-                className="rounded-full"
-              >
-                Confirmar
-              </Button>
-              <DrawerClose asChild>
+      <Dialog open>
+        <DialogContent className="w-[90%] rounded-xl">
+          <DialogHeader className="items-center">
+            <DialogTitle>Histórico de compras</DialogTitle>
+            <DialogDescription>
+              Insira seu CPF para visualizar seus pedidos.
+            </DialogDescription>
+          </DialogHeader>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+              <FormField
+                control={form.control}
+                name="cpf"
+                render={({ field }) => (
+                  <FormItem className="p-4">
+                    <FormLabel>CPF:</FormLabel>
+                    <FormControl>
+                      <PatternFormat
+                        placeholder="Digite seu CPF..."
+                        format="###.###.###.##"
+                        customInput={Input}
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <DialogFooter className="gap-3 flex flex-col w-full">
                 <Button
-                  variant="outline"
+                  type="submit"
+                  variant="destructive"
                   className="rounded-full"
-                  onClick={handleCancel}
                 >
-                  Cancelar
+                  Confirmar
                 </Button>
-              </DrawerClose>
-            </DrawerFooter>
-          </form>
-        </Form>
-      </DrawerContent>
-    </Drawer>
+                <DialogClose asChild>
+                  <Button
+                    variant="outline"
+                    className="rounded-full"
+                    onClick={handleCancel}
+                  >
+                    Cancelar
+                  </Button>
+                </DialogClose>
+              </DialogFooter>
+            </form>
+          </Form>
+        </DialogContent>
+      </Dialog>
   );
 };
 
