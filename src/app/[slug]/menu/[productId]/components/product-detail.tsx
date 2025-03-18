@@ -52,8 +52,8 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
 
   return (
     <>
-      <div className="relative z-50 mt-[-1.5rem] flex flex-auto flex-col rounded-t-3xl bg-background p-5">
-        <div className="flex-auto">
+      <div className="relative z-50 mt-[-1.5rem] flex flex-auto flex-col items-center rounded-t-3xl bg-background p-5">
+        <div className="flex-auto md:w-[70%] lg:w-[60%] xl:w-[50%] 2xl:w-[40%]">
           {/** Restaurante */}
           <div className="flex items-center gap-1">
             <Image
@@ -119,7 +119,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
         <Button
           onClick={handleAddToCart}
           disabled={cartIsEmpty()}
-          className="mt-6 w-full rounded-full"
+          className="mt-6 w-full rounded-full md:w-[70%] lg:w-[60%] xl:w-[50%] 2xl:w-[40%]"
         >
           Adicionar à sacola
         </Button>
