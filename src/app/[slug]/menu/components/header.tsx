@@ -8,8 +8,6 @@ import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 
-import CartSheet from "./cart-sheet";
-
 interface RestaurantHeaderProps {
   restaurant: Pick<Restaurant, "coverImageUrl" | "name">;
   slug: string;
@@ -44,7 +42,6 @@ const RestaurantHeader = ({ restaurant, slug }: RestaurantHeaderProps) => {
           <ScrollTextIcon />
         </Button>
       </div>
-      <CartSheet />
     </>
   );
 };
